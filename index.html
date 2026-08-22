@@ -1,0 +1,1215 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Only For You ❤️</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,body{
+    width:100%;
+    min-height:100%;
+}
+
+body{
+    font-family:Georgia,"Times New Roman",serif;
+    background:
+        radial-gradient(circle at 20% 20%,#3a071d 0%,transparent 35%),
+        radial-gradient(circle at 80% 80%,#25052d 0%,transparent 35%),
+        linear-gradient(135deg,#050107,#12030c,#070108);
+    color:white;
+    overflow:hidden;
+}
+
+/* BACKGROUND */
+
+.bg-glow{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    background:
+        radial-gradient(circle at 50% 50%,rgba(255,40,100,.08),transparent 45%);
+}
+
+.stars{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    opacity:.35;
+    background-image:
+        radial-gradient(#fff 1px,transparent 1px),
+        radial-gradient(#ff8fb2 1px,transparent 1px);
+    background-size:75px 75px,120px 120px;
+    animation:stars 25s linear infinite;
+}
+
+@keyframes stars{
+    from{background-position:0 0,0 0}
+    to{background-position:150px 150px,-120px 120px}
+}
+
+/* GENERAL */
+
+.page{
+    display:none;
+    width:100%;
+    height:100vh;
+    min-height:100vh;
+    padding:25px;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    position:relative;
+}
+
+.page.active{
+    display:flex;
+    animation:pageIn .8s ease;
+}
+
+@keyframes pageIn{
+    from{
+        opacity:0;
+        transform:translateX(60px) scale(.97);
+    }
+    to{
+        opacity:1;
+        transform:none;
+    }
+}
+
+.card{
+    width:min(850px,100%);
+    padding:45px 30px;
+    border-radius:30px;
+    background:rgba(255,255,255,.055);
+    border:1px solid rgba(255,120,160,.2);
+    backdrop-filter:blur(18px);
+    box-shadow:
+        0 0 70px rgba(255,20,100,.1),
+        inset 0 0 30px rgba(255,255,255,.02);
+}
+
+h1{
+    font-size:clamp(38px,8vw,75px);
+    margin:20px 0;
+    background:linear-gradient(90deg,#fff,#ff91b5,#fff);
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+h2{
+    font-size:clamp(30px,6vw,50px);
+    margin-bottom:20px;
+}
+
+p{
+    line-height:1.9;
+    color:#efd0db;
+}
+
+.small{
+    color:#ff91b5;
+    letter-spacing:4px;
+    font-size:13px;
+    text-transform:uppercase;
+}
+
+/* BUTTON */
+
+.btn{
+    border:0;
+    padding:15px 30px;
+    border-radius:50px;
+    background:linear-gradient(135deg,#ff3274,#a91663);
+    color:white;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    box-shadow:0 10px 30px rgba(255,30,100,.3);
+    transition:.3s;
+    margin-top:25px;
+}
+
+.btn:hover{
+    transform:translateY(-3px) scale(1.03);
+    box-shadow:0 15px 40px rgba(255,30,100,.45);
+}
+
+/* LOCK */
+
+.lock-heart{
+    font-size:80px;
+    display:block;
+    animation:pulse 1.5s infinite;
+}
+
+@keyframes pulse{
+    0%,100%{transform:scale(1)}
+    50%{transform:scale(1.15)}
+}
+
+.code{
+    display:flex;
+    justify-content:center;
+    gap:8px;
+    margin:25px 0;
+}
+
+.code input{
+    width:45px;
+    height:55px;
+    border-radius:12px;
+    border:1px solid #713049;
+    background:rgba(0,0,0,.4);
+    color:#fff;
+    text-align:center;
+    font-size:23px;
+    outline:none;
+}
+
+.code input:focus{
+    border-color:#ff4f8b;
+    box-shadow:0 0 18px rgba(255,50,120,.35);
+}
+
+.error{
+    color:#ff719d;
+    height:25px;
+    margin-top:12px;
+}
+
+/* SHAYARI */
+
+.shayari{
+    font-size:24px;
+    line-height:2;
+    font-style:italic;
+    color:#ffe4ec;
+}
+
+.flower{
+    font-size:65px;
+    margin-bottom:15px;
+}
+
+/* LETTER */
+
+.letter{
+    max-height:65vh;
+    overflow:auto;
+    text-align:left;
+    line-height:2;
+    font-size:17px;
+    color:#efd8df;
+    padding:10px;
+}
+
+.letter::-webkit-scrollbar{
+    width:5px;
+}
+
+.letter::-webkit-scrollbar-thumb{
+    background:#a62b57;
+    border-radius:10px;
+}
+
+/* QUESTIONS */
+
+.question-number{
+    color:#ff8faf;
+    font-size:14px;
+    letter-spacing:3px;
+}
+
+.question{
+    font-size:30px;
+    margin:25px 0 35px;
+    color:#ffe9ef;
+}
+
+.answers{
+    position:relative;
+    min-height:100px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:20px;
+}
+
+.yes,
+.no{
+    padding:14px 32px;
+    border-radius:50px;
+    border:0;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.yes{
+    color:white;
+    background:linear-gradient(135deg,#ff3274,#bd1c65);
+    box-shadow:0 8px 25px rgba(255,30,100,.3);
+}
+
+.no{
+    background:#3a1725;
+    color:#f5b8c9;
+    position:relative;
+}
+
+/* FINAL */
+
+.final-heart{
+    font-size:110px;
+    animation:pulse 1.3s infinite;
+}
+
+.final-message{
+    font-size:20px;
+    line-height:2;
+    color:#f4d7df;
+}
+
+/* BOUQUET */
+
+.bouquet{
+    position:relative;
+    width:300px;
+    height:300px;
+    margin:0 auto 15px;
+}
+
+.flowers{
+    position:absolute;
+    top:20px;
+    left:50%;
+    transform:translateX(-50%);
+    width:250px;
+    height:180px;
+}
+
+.rose{
+    position:absolute;
+    font-size:65px;
+    animation:flowerFloat 2s ease-in-out infinite;
+    filter:drop-shadow(0 0 12px rgba(255,40,90,.4));
+}
+
+.rose:nth-child(1){
+    left:15px;
+    top:45px;
+}
+
+.rose:nth-child(2){
+    left:75px;
+    top:10px;
+    animation-delay:.2s;
+}
+
+.rose:nth-child(3){
+    left:130px;
+    top:40px;
+    animation-delay:.4s;
+}
+
+.rose:nth-child(4){
+    left:185px;
+    top:20px;
+    animation-delay:.6s;
+}
+
+.rose:nth-child(5){
+    left:100px;
+    top:75px;
+    animation-delay:.8s;
+}
+
+@keyframes flowerFloat{
+    0%,100%{transform:rotate(-3deg) translateY(0)}
+    50%{transform:rotate(3deg) translateY(-8px)}
+}
+
+.stems{
+    position:absolute;
+    top:120px;
+    left:50%;
+    width:90px;
+    height:140px;
+    transform:translateX(-50%);
+    border-left:4px solid #3d8a4b;
+    border-right:4px solid #3d8a4b;
+    transform-origin:top;
+    background:linear-gradient(75deg,transparent 45%,#397f43 46%,#397f43 50%,transparent 51%);
+}
+
+.wrapper{
+    position:absolute;
+    bottom:0;
+    left:50%;
+    transform:translateX(-50%);
+    width:190px;
+    height:135px;
+    background:linear-gradient(135deg,#f3a5bd,#c84b79);
+    clip-path:polygon(10% 0,90% 0,100% 100%,0 100%);
+    box-shadow:0 15px 30px rgba(0,0,0,.3);
+}
+
+.ribbon{
+    position:absolute;
+    bottom:40px;
+    left:50%;
+    transform:translateX(-50%);
+    width:70px;
+    height:25px;
+    background:#ffe0e9;
+    border-radius:50%;
+}
+
+.ribbon:before,
+.ribbon:after{
+    content:"";
+    position:absolute;
+    width:45px;
+    height:35px;
+    border:4px solid #ffe0e9;
+    border-radius:50%;
+    top:-7px;
+}
+
+.ribbon:before{
+    right:55px;
+}
+
+.ribbon:after{
+    left:55px;
+}
+
+/* FINAL SCREEN */
+
+.final-title{
+    color:#ff9fba;
+}
+
+/* HEARTS */
+
+.heart{
+    position:fixed;
+    bottom:-50px;
+    z-index:100;
+    pointer-events:none;
+    animation:heartUp linear forwards;
+}
+
+@keyframes heartUp{
+    0%{
+        transform:translateY(0) rotate(0);
+        opacity:0;
+    }
+    10%{opacity:1}
+    100%{
+        transform:translateY(-110vh) rotate(360deg);
+        opacity:0;
+    }
+}
+
+/* PETALS */
+
+.petal{
+    position:fixed;
+    top:-40px;
+    z-index:90;
+    pointer-events:none;
+    animation:petalFall linear forwards;
+}
+
+@keyframes petalFall{
+    to{
+        transform:translateY(110vh) rotate(500deg);
+        opacity:.2;
+    }
+}
+
+/* TOP PROGRESS */
+
+.progress{
+    position:fixed;
+    top:15px;
+    left:50%;
+    transform:translateX(-50%);
+    display:none;
+    gap:7px;
+    z-index:1000;
+}
+
+.dot{
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:#542333;
+    transition:.3s;
+}
+
+.dot.active{
+    background:#ff6d99;
+    box-shadow:0 0 10px #ff4c85;
+}
+
+/* MUSIC */
+
+.music{
+    display:none;
+    position:fixed;
+    right:18px;
+    bottom:18px;
+    z-index:1000;
+    width:48px;
+    height:48px;
+    border-radius:50%;
+    border:1px solid #713049;
+    background:#190711;
+    color:white;
+    cursor:pointer;
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+    .page{
+        padding:18px;
+    }
+
+    .card{
+        padding:35px 20px;
+    }
+
+    .code{
+        gap:4px;
+    }
+
+    .code input{
+        width:39px;
+        height:50px;
+    }
+
+    .shayari{
+        font-size:19px;
+    }
+
+    .question{
+        font-size:23px;
+    }
+
+    .letter{
+        font-size:15px;
+    }
+
+    .bouquet{
+        transform:scale(.8);
+        margin-top:-20px;
+        margin-bottom:-30px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="stars"></div>
+<div class="bg-glow"></div>
+
+<!-- PROGRESS -->
+
+<div class="progress" id="progress">
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+</div>
+
+<!-- ================= PAGE 1 ================= -->
+
+<section class="page active" id="page1">
+
+    <div class="card">
+
+        <span class="lock-heart">🔐</span>
+
+        <div class="small">
+            Private • Only For You
+        </div>
+
+        <h1>Secret Love</h1>
+
+        <p>
+            Kuch aisa hai jo main sabko nahi dikha sakta...
+            <br>
+            sirf us insaan ko jo mere dil ke sabse kareeb hai. ❤️
+        </p>
+
+        <div class="code">
+
+            <input type="password" maxlength="1" inputmode="numeric">
+            <input type="password" maxlength="1" inputmode="numeric">
+            <input type="password" maxlength="1" inputmode="numeric">
+            <input type="password" maxlength="1" inputmode="numeric">
+            <input type="password" maxlength="1" inputmode="numeric">
+            <input type="password" maxlength="1" inputmode="numeric">
+
+        </div>
+
+        <button class="btn" onclick="unlock()">
+            🔓 Unlock
+        </button>
+
+        <div class="error" id="error"></div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= PAGE 2 ================= -->
+
+<section class="page" id="page2">
+
+    <div class="card">
+
+        <div class="flower">💕</div>
+
+        <div class="small">
+            Welcome To My Heart
+        </div>
+
+        <h1>Hey Beautiful ❤️</h1>
+
+        <p>
+            Agar tum yahan tak aa gayi ho,
+            toh samajh jao ki ye website
+            kisi ordinary person ke liye nahi hai.
+        </p>
+
+        <p style="margin-top:20px">
+            Ye sirf uske liye hai...
+            <br>
+            jiske liye mere dil mein ek special corner hai. 🌹
+        </p>
+
+        <button class="btn" onclick="nextPage()">
+            Continue My Love ❤️
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- ================= PAGE 3 ================= -->
+
+<section class="page" id="page3">
+
+    <div class="card">
+
+        <div class="flower">🌹</div>
+
+        <div class="small">
+            Kuch Alfaaz
+        </div>
+
+        <h2>Sirf Tumhare Liye</h2>
+
+        <div class="shayari">
+
+            "Tumse milkar laga,
+            mohabbat bhi kitni khoobsurat cheez hai...
+
+            <br><br>
+
+            Tumhari ek smile ke liye
+            mera dil hazaar baar dhadak sakta hai.
+
+            <br><br>
+
+            Tum paas raho ya door,
+            tumhari jagah mere dil mein
+            hamesha wahi rahegi. ❤️"
+
+        </div>
+
+        <button class="btn" onclick="nextPage()">
+            Aur Sunogi? 💕
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- ================= PAGE 4 ================= -->
+
+<section class="page" id="page4">
+
+    <div class="card">
+
+        <div class="small">
+            From My Heart
+        </div>
+
+        <h2>💌 Ek Chhoti Si Baat</h2>
+
+        <div class="letter">
+
+            <p>
+                Pata nahi kab tum meri life ka
+                itna important part ban gayi.
+            </p>
+
+            <p>
+                Pehle tumse baat karna achha lagta tha,
+                phir tumse baat karna zaroori sa lagne laga.
+            </p>
+
+            <p>
+                Tumhari smile,
+                tumhari chhoti-chhoti baatein,
+                tumhara gussa,
+                tumhari care...
+                sab kuch mere liye special hai.
+            </p>
+
+            <p>
+                Main perfect nahi hoon.
+                Mujhse mistakes hongi,
+                kabhi main tumhe annoy bhi karunga.
+            </p>
+
+            <p>
+                Lekin ek cheez dil se keh sakta hoon —
+                <strong>
+                    tumhari khushi mere liye hamesha important rahegi.
+                </strong>
+            </p>
+
+            <p>
+                Aur agar mujhe life mein kisi ek person
+                ko baar-baar choose karna ho...
+            </p>
+
+            <p>
+                <strong>
+                    Main tumhe choose karunga. ❤️
+                </strong>
+            </p>
+
+        </div>
+
+        <button class="btn" onclick="nextPage()">
+            One More Thing... 💖
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- ================= PAGE 5 QUESTION 1 ================= -->
+
+<section class="page" id="page5">
+
+    <div class="card">
+
+        <div class="question-number">
+            QUESTION 01
+        </div>
+
+        <h2>Ek Important Sawal ❤️</h2>
+
+        <div class="question">
+            Kya tumhe mere saath time spend karna pasand hai? 🥺
+        </div>
+
+        <div class="answers">
+
+            <button class="yes" onclick="answerYes()">
+                YES ❤️
+            </button>
+
+            <button class="no" onmouseover="moveNo(this)" onclick="moveNo(this)">
+                NO 😏
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= PAGE 6 QUESTION 2 ================= -->
+
+<section class="page" id="page6">
+
+    <div class="card">
+
+        <div class="question-number">
+            QUESTION 02
+        </div>
+
+        <h2>Ab Sach-Sach Batana 💕</h2>
+
+        <div class="question">
+            Kya main tumhari favourite person ho? 🥰
+        </div>
+
+        <div class="answers">
+
+            <button class="yes" onclick="answerYes()">
+                YES 💖
+            </button>
+
+            <button class="no" onmouseover="moveNo(this)" onclick="moveNo(this)">
+                NO 🙈
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= PAGE 7 FINAL ================= -->
+
+<section class="page" id="page7">
+
+    <div class="card">
+
+        <div class="bouquet">
+
+            <div class="flowers">
+
+                <div class="rose">🌹</div>
+                <div class="rose">🌹</div>
+                <div class="rose">🌹</div>
+                <div class="rose">🌹</div>
+                <div class="rose">🌹</div>
+
+            </div>
+
+            <div class="stems"></div>
+
+            <div class="wrapper"></div>
+
+            <div class="ribbon"></div>
+
+        </div>
+
+        <div class="small">
+            A Special Surprise For You
+        </div>
+
+        <h2 class="final-title">
+            This Bouquet Is For You 💐
+        </h2>
+
+        <div class="final-message">
+
+            <p>
+                Jaise ye flowers khoobsurat hain,
+                waise hi tum meri life ka
+                sabse khoobsurat part ho. ❤️
+            </p>
+
+            <br>
+
+            <p>
+                Main tumhe duniya ke saare flowers
+                nahi de sakta...
+                <br>
+                lekin apne dil mein
+                tumhare liye hamesha ek
+                special jagah rakh sakta hoon. 🌹
+            </p>
+
+            <br>
+
+            <strong>
+                I choose you. Today, tomorrow,
+                and every beautiful day after that. ❤️
+            </strong>
+
+        </div>
+
+        <div class="final-heart">
+            ❤️
+        </div>
+
+        <p>
+            The End...?
+            <br>
+            <span style="color:#ff8eae">
+                Maybe just the beginning. ✨
+            </span>
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- MUSIC -->
+
+<button class="music" id="musicBtn" onclick="toggleMusic()">
+    🔇
+</button>
+
+<audio id="music" loop>
+    <source src="love.mp3" type="audio/mpeg">
+</audio>
+
+
+<script>
+
+/* ================= SETTINGS ================= */
+
+const SECRET_CODE = "100805";
+
+let currentPage = 1;
+
+const totalPages = 7;
+
+const pages = [];
+
+for(let i=1;i<=totalPages;i++){
+    pages.push(document.getElementById("page"+i));
+}
+
+const dots = document.querySelectorAll(".dot");
+
+const inputs = document.querySelectorAll(".code input");
+
+
+/* ================= CODE INPUT ================= */
+
+inputs.forEach((input,index)=>{
+
+    input.addEventListener("input",function(){
+
+        this.value = this.value.replace(/[^0-9]/g,"");
+
+        if(this.value && index < inputs.length-1){
+            inputs[index+1].focus();
+        }
+
+    });
+
+    input.addEventListener("keydown",function(e){
+
+        if(e.key === "Backspace" && !this.value && index > 0){
+            inputs[index-1].focus();
+        }
+
+        if(e.key === "Enter"){
+            unlock();
+        }
+
+    });
+
+});
+
+
+/* ================= UNLOCK ================= */
+
+function unlock(){
+
+    let code = "";
+
+    inputs.forEach(input=>{
+        code += input.value;
+    });
+
+    if(code === SECRET_CODE){
+
+        document.getElementById("error").innerText = "";
+
+        currentPage = 2;
+
+        showPage();
+
+        document.getElementById("progress").style.display = "flex";
+
+        document.getElementById("musicBtn").style.display = "block";
+
+        startRomanticEffects();
+
+        const music = document.getElementById("music");
+
+        music.play().catch(()=>{});
+
+    }else{
+
+        document.getElementById("error").innerText =
+            "Wrong code... ❤️ Try again.";
+
+        inputs.forEach(input=>{
+            input.value="";
+        });
+
+        inputs[0].focus();
+
+    }
+
+}
+
+
+/* ================= PAGE NAVIGATION ================= */
+
+function showPage(){
+
+    pages.forEach(page=>{
+        page.classList.remove("active");
+    });
+
+    pages[currentPage-1].classList.add("active");
+
+    dots.forEach((dot,index)=>{
+        dot.classList.toggle(
+            "active",
+            index < currentPage
+        );
+    });
+
+}
+
+function nextPage(){
+
+    if(currentPage < totalPages){
+
+        currentPage++;
+
+        showPage();
+
+    }
+
+}
+
+
+/* ================= YES ================= */
+
+function answerYes(){
+
+    createHeartExplosion();
+
+    setTimeout(()=>{
+
+        if(currentPage < totalPages){
+            currentPage++;
+            showPage();
+        }
+
+    },700);
+
+}
+
+
+/* ================= NO BUTTON ================= */
+
+function moveNo(button){
+
+    const padding = 20;
+
+    const maxX =
+        window.innerWidth -
+        button.offsetWidth -
+        padding*2;
+
+    const maxY =
+        window.innerHeight -
+        button.offsetHeight -
+        padding*2;
+
+    const x = padding + Math.random()*Math.max(maxX,50);
+    const y = padding + Math.random()*Math.max(maxY,50);
+
+    button.style.position = "fixed";
+
+    button.style.left = x+"px";
+    button.style.top = y+"px";
+
+    button.style.zIndex = "9999";
+
+}
+
+
+/* ================= HEARTS ================= */
+
+function createHeart(){
+
+    const heart = document.createElement("div");
+
+    heart.className = "heart";
+
+    const list = [
+        "❤️",
+        "💕",
+        "💗",
+        "💖",
+        "💘",
+        "✨",
+        "🌹"
+    ];
+
+    heart.innerText =
+        list[Math.floor(Math.random()*list.length)];
+
+    heart.style.left =
+        Math.random()*100+"vw";
+
+    heart.style.fontSize =
+        15+Math.random()*28+"px";
+
+    heart.style.animationDuration =
+        5+Math.random()*5+"s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{
+        heart.remove();
+    },10000);
+
+}
+
+
+/* ================= PETALS ================= */
+
+function createPetal(){
+
+    const petal = document.createElement("div");
+
+    petal.className="petal";
+
+    petal.innerText =
+        ["🌸","🌹","🌺","❤️"][Math.floor(Math.random()*4)];
+
+    petal.style.left =
+        Math.random()*100+"vw";
+
+    petal.style.fontSize =
+        15+Math.random()*20+"px";
+
+    petal.style.animationDuration =
+        5+Math.random()*6+"s";
+
+    document.body.appendChild(petal);
+
+    setTimeout(()=>{
+        petal.remove();
+    },12000);
+
+}
+
+
+/* ================= EXPLOSION ================= */
+
+function createHeartExplosion(){
+
+    for(let i=0;i<30;i++){
+
+        setTimeout(()=>{
+
+            const heart=document.createElement("div");
+
+            heart.className="heart";
+
+            heart.innerText =
+                ["❤️","💖","💕","💗","✨"]
+                [Math.floor(Math.random()*5)];
+
+            heart.style.left =
+                (20+Math.random()*60)+"vw";
+
+            heart.style.bottom =
+                (20+Math.random()*30)+"vh";
+
+            heart.style.fontSize =
+                (20+Math.random()*35)+"px";
+
+            heart.style.animationDuration =
+                (2+Math.random()*3)+"s";
+
+            document.body.appendChild(heart);
+
+            setTimeout(()=>{
+                heart.remove();
+            },6000);
+
+        },i*60);
+
+    }
+
+}
+
+
+/* ================= EFFECTS ================= */
+
+function startRomanticEffects(){
+
+    setInterval(createHeart,650);
+
+    setInterval(createPetal,1200);
+
+}
+
+
+/* ================= MUSIC ================= */
+
+function toggleMusic(){
+
+    const music =
+        document.getElementById("music");
+
+    const button =
+        document.getElementById("musicBtn");
+
+    if(music.paused){
+
+        music.play().catch(()=>{});
+
+        button.innerText="🔊";
+
+    }else{
+
+        music.pause();
+
+        button.innerText="🔇";
+
+    }
+
+}
+
+
+/* ================= START ================= */
+
+window.addEventListener("load",()=>{
+
+    inputs[0].focus();
+
+});
+
+</script>
+
+</body>
+</html>
